@@ -1,0 +1,48 @@
+openapi: 3.0.1
+info:
+  title: /
+  version: 3.1.1
+servers:
+- url: "{server}:{port}/"
+  variables:
+    server:
+      default: http://localhost
+    port:
+      default: "8090"
+paths:
+  /temperature:
+    get:
+      summary: A resource for getting temperature for a list of locations
+      operationId: getTemperature
+      parameters:
+      - name: locations
+        in: query
+        description: 'the input string array locations '
+        required: true
+        schema:
+          type: array
+          items:
+            type: string
+      responses:
+        "200":
+          description: Ok
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TemperatureValues'
+        "500":
+          description: Internal server error
+          content:
+            text/plain:
+              schema:
+                type: string
+components:
+  schemas:
+    TemperatureValues:
+      required:
+      - temperatureValues
+      type: object
+      properties:
+        temperatureValues:
+          type: object
+          additionalProperties: true

@@ -1,0 +1,12 @@
+[build-options]
+  observabilityIncluded = true
+
+[package]
+  distribution = "2201.3.1"
+  export = ["scatter_gather_messaging"]
+  icon = "docs/icon.png"
+  keywords = ["Kind/Sample","Type/Service","Category/Services","Category/Integration"]
+  name = "scatter_gather_messaging"
+  org = "lakshanwso2"
+  version = "3.1.1"
+
